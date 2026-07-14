@@ -154,17 +154,15 @@ class QuickSettingsSurface extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: MotionActionButton(
-                    variant: MotionButtonVariant.tonal,
                     size: MotionButtonSize.medium,
                     onPressed: controller.takeScreenshot,
-                    icon: Icons.screenshot_region_rounded,
+                    icon: Icons.screenshot_rounded,
                     label: 'Screenshot',
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: MotionActionButton(
-                    variant: MotionButtonVariant.tonal,
                     size: MotionButtonSize.medium,
                     onPressed: null,
                     icon: Icons.videocam_rounded,
@@ -337,7 +335,6 @@ class _AudioControl extends StatelessWidget {
             const SizedBox(height: 10),
             MotionSlider(
               value: endpoint.volume,
-              min: 0,
               max: 1.5,
               label: '${(endpoint.volume * 100).round()}%',
               semanticLabel: '$title volume',
@@ -399,8 +396,6 @@ class _ExpressiveValueControl extends StatelessWidget {
             const SizedBox(height: 8),
             MotionSlider(
               value: value,
-              min: 0,
-              max: 1,
               label: '${(value * 100).round()}%',
               semanticLabel: title,
               emphasis: MotionSliderEmphasis.secondary,
@@ -471,7 +466,6 @@ class _SessionAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MotionActionButton(
-      variant: MotionButtonVariant.tonal,
       size: MotionButtonSize.medium,
       onPressed: onPressed,
       icon: icon,

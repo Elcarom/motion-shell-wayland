@@ -34,5 +34,14 @@ void main() {
     expect(theme.trackGap, 6);
     expect(theme.trackShape, isA<GappedSliderTrackShape>());
     expect(theme.thumbShape, isA<HandleThumbShape>());
+    expect(theme.thumbSize?.resolve(<WidgetState>{}), const Size(4, 44));
+    expect(
+      theme.thumbSize?.resolve(<WidgetState>{WidgetState.pressed}),
+      const Size(2, 44),
+    );
+    expect(
+      theme.thumbSize?.resolve(<WidgetState>{WidgetState.focused}),
+      const Size(2, 44),
+    );
   });
 }

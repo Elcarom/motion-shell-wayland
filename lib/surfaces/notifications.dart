@@ -83,7 +83,7 @@ class _NotificationsSurfaceState extends State<NotificationsSurface> {
                 ? const _NotificationEmptyState()
                 : ListView.separated(
                     itemCount: _items.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    separatorBuilder: (_, _) => const SizedBox(height: 10),
                     itemBuilder: (BuildContext context, int index) {
                       final _NotificationItem item = _items[index];
                       return Dismissible(

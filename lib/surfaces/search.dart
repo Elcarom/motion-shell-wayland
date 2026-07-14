@@ -30,7 +30,7 @@ class _SearchSurfaceState extends State<SearchSurface> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             SearchBar(
-              autofocus: true,
+              autoFocus: true,
               hintText: 'Search Motion',
               leading: const Icon(Icons.search_rounded),
               onChanged: (String value) => setState(() => _query = value),
@@ -46,7 +46,7 @@ class _SearchSurfaceState extends State<SearchSurface> {
                   : ListView.separated(
                       shrinkWrap: true,
                       itemCount: results.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 6),
+                      separatorBuilder: (_, _) => const SizedBox(height: 6),
                       itemBuilder: (BuildContext context, int index) {
                         final _SearchResult item = results[index];
                         return ListTile(

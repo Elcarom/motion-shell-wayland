@@ -57,8 +57,7 @@ class _SurfaceSpec {
     required this.left,
     required this.margins,
     this.autoExclusive = false,
-    this.exclusiveZone = 0,
-  });
+  }) : exclusiveZone = 0;
 
   factory _SurfaceSpec.forKind(SurfaceKind kind) {
     return switch (kind) {

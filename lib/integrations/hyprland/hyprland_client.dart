@@ -55,7 +55,10 @@ class HyprlandClient {
           0,
         ).timeout(const Duration(seconds: 2));
         await for (final String line
-            in socket.transform(utf8.decoder).transform(const LineSplitter())) {
+            in socket
+                .cast<List<int>>()
+                .transform(utf8.decoder)
+                .transform(const LineSplitter())) {
           yield HyprlandEvent.parse(line);
         }
       } on Object {
@@ -87,8 +90,8 @@ class HyprlandClient {
     try {
       socket.write(request);
       await socket.flush();
-      await socket.shutdown(SocketDirection.send);
       return socket
+          .cast<List<int>>()
           .transform(utf8.decoder)
           .join()
           .timeout(const Duration(seconds: 2));

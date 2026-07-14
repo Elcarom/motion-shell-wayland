@@ -65,7 +65,6 @@ class SafeProcessRunner {
         executable,
         List<String>.unmodifiable(arguments),
         environment: environment,
-        runInShell: false,
       );
       final Future<String> stdoutFuture = process.stdout
           .transform(const SystemEncoding().decoder)
@@ -76,7 +75,7 @@ class SafeProcessRunner {
       final int exitCode = await process.exitCode.timeout(
         timeout ?? defaultTimeout,
         onTimeout: () {
-          process.kill(ProcessSignal.sigterm);
+          process.kill();
           throw TimeoutException('$executable timed out');
         },
       );

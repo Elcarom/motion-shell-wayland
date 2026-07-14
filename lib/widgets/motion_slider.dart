@@ -51,6 +51,16 @@ class MotionSlider extends StatelessWidget {
         thumbShape: const HandleThumbShape(),
         trackHeight: 16,
         trackGap: 6,
+        thumbSize: WidgetStateProperty.resolveWith<Size?>((
+          Set<WidgetState> states,
+        ) {
+          if (states.contains(WidgetState.focused) ||
+              states.contains(WidgetState.pressed)) {
+            return const Size(2, 44);
+          }
+
+          return const Size(4, 44);
+        }),
         activeTrackColor: activeColor,
         inactiveTrackColor: inactiveColor,
         thumbColor: activeColor,
@@ -58,7 +68,7 @@ class MotionSlider extends StatelessWidget {
         disabledActiveTrackColor: disabledActive,
         disabledInactiveTrackColor: disabledInactive,
         disabledThumbColor: disabledActive,
-        showValueIndicator: ShowValueIndicator.always,
+        showValueIndicator: ShowValueIndicator.onDrag,
       ),
       child: Slider(
         value: value.clamp(min, max).toDouble(),

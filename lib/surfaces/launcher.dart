@@ -72,7 +72,7 @@ class _LauncherSurfaceState extends State<LauncherSurface> {
               Expanded(
                 child: SearchBar(
                   controller: _searchController,
-                  autofocus: true,
+                  autoFocus: true,
                   hintText: 'Search apps, settings, files, and actions',
                   leading: const Icon(Icons.search_rounded),
                   trailing: <Widget>[
@@ -135,7 +135,7 @@ class _LauncherSurfaceState extends State<LauncherSurface> {
                             if (!_gridMode) {
                               return ListView.separated(
                                 itemCount: results.length,
-                                separatorBuilder: (_, __) =>
+                                separatorBuilder: (_, _) =>
                                     const SizedBox(height: 6),
                                 itemBuilder: (BuildContext context, int index) {
                                   final DesktopApplication app = results[index];

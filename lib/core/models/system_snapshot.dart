@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'audio_device.dart';
 import 'availability_state.dart';
 
-export 'availability_state.dart';
 export 'audio_device.dart';
+export 'availability_state.dart';
 
 class SystemSnapshot {
   const SystemSnapshot({
@@ -12,12 +12,8 @@ class SystemSnapshot {
     this.activeApplication = 'Desktop',
     this.wifi = AvailabilityState.unknown,
     this.bluetooth = AvailabilityState.unknown,
-    AudioEndpointSnapshot? outputAudio,
-    AudioEndpointSnapshot? inputAudio,
-    double volume = 0.56,
-    bool muted = false,
-    double inputVolume = 0.72,
-    bool microphoneMuted = false,
+    this.outputAudio = const AudioEndpointSnapshot(volume: 0.56),
+    this.inputAudio = const AudioEndpointSnapshot(volume: 0.72),
     this.brightness = 0.72,
     this.batteryPercent,
     this.onBattery = false,
@@ -29,11 +25,7 @@ class SystemSnapshot {
     this.themeMode = 'dark',
     this.reducedMotion = false,
     this.wallpaperPath,
-  }) : outputAudio =
-           outputAudio ?? AudioEndpointSnapshot(volume: volume, muted: muted),
-       inputAudio =
-           inputAudio ??
-           AudioEndpointSnapshot(volume: inputVolume, muted: microphoneMuted);
+  });
 
   factory SystemSnapshot.fromJson(Map<String, Object?> json) {
     final Object? outputValue = json['outputAudio'];
@@ -47,16 +39,18 @@ class SystemSnapshot {
           ? AudioEndpointSnapshot.fromJson(
               Map<String, Object?>.from(outputValue),
             )
-          : null,
+          : AudioEndpointSnapshot(
+              volume: (json['volume'] as num?)?.toDouble() ?? 0.56,
+              muted: json['muted'] as bool? ?? false,
+            ),
       inputAudio: inputValue is Map
           ? AudioEndpointSnapshot.fromJson(
               Map<String, Object?>.from(inputValue),
             )
-          : null,
-      volume: (json['volume'] as num?)?.toDouble() ?? 0.56,
-      muted: json['muted'] as bool? ?? false,
-      inputVolume: (json['inputVolume'] as num?)?.toDouble() ?? 0.72,
-      microphoneMuted: json['microphoneMuted'] as bool? ?? false,
+          : AudioEndpointSnapshot(
+              volume: (json['inputVolume'] as num?)?.toDouble() ?? 0.72,
+              muted: json['microphoneMuted'] as bool? ?? false,
+            ),
       brightness: (json['brightness'] as num?)?.toDouble() ?? 0.72,
       batteryPercent: (json['batteryPercent'] as num?)?.toInt(),
       onBattery: json['onBattery'] as bool? ?? false,

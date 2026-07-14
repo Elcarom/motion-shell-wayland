@@ -45,7 +45,7 @@ class MotionStateService {
       socketFile.path,
       type: InternetAddressType.unix,
     );
-    _server = await ServerSocket.bind(address, 0, shared: false);
+    _server = await ServerSocket.bind(address, 0);
     await Process.run('chmod', <String>['600', socketFile.path]);
     _server!.listen(_accept, onError: _logError);
 
@@ -62,6 +62,7 @@ class MotionStateService {
   void _accept(Socket socket) {
     _clients.add(socket);
     final StreamSubscription<String> subscription = socket
+        .cast<List<int>>()
         .transform(utf8.decoder)
         .transform(const LineSplitter())
         .listen(

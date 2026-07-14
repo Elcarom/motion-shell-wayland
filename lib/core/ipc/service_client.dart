@@ -33,6 +33,7 @@ class ServiceClient {
         0,
       ).timeout(const Duration(milliseconds: 600));
       _subscription = _socket!
+          .cast<List<int>>()
           .transform(utf8.decoder)
           .transform(const LineSplitter())
           .listen(
