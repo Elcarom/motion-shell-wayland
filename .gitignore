@@ -1,0 +1,27 @@
+.dart_tool/
+.fvm/
+build/
+linux/flutter/ephemeral/
+*.log
+.DS_Store
+
+# Generated Flutter platform state
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# IDE and local environment
+.idea/
+.vscode/
+*.iml
+.env
+.env.*
+
+# Local packaging artifacts
+*.tar.gz
+*.zip
+checksums*.txt
+
+# Python tooling
+__pycache__/
+*.py[cod]

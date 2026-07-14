@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a cohesive product or integration improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Explain the workflow problem rather than only describing a widget.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed experience
+      description: Include Material component choices, states, motion, and keyboard behavior where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: integration
+    attributes:
+      label: Desktop integration
+      description: Note relevant Hyprland, D-Bus, portal, PipeWire, NetworkManager, or other interfaces.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
