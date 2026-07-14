@@ -19,10 +19,7 @@ class WaylandLayerSurfaceHost implements LayerSurfaceHost {
       return false;
     }
     final _SurfaceSpec spec = _SurfaceSpec.forKind(kind);
-    final bool supported = await _plugin.isLayerShellSupported();
-    if (!supported) {
-      return false;
-    }
+
     final bool initialized = await _plugin.initialize(spec.width, spec.height);
     if (!initialized) {
       return false;

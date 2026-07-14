@@ -22,7 +22,12 @@ import sys
 p = Path(sys.argv[1])
 s = p.read_text()
 s = s.replace('gboolean use_header_bar = TRUE;', 'gboolean use_header_bar = FALSE;')
-s = s.replace('gtk_widget_show(GTK_WIDGET(window));', 'gtk_widget_realize(GTK_WIDGET(window));')
+marker = '  gtk_window_set_default_size(window, 1280, 720);'
+realize = '  gtk_widget_realize(GTK_WIDGET(window));'
+if realize not in s:
+if marker not in s:
+raise SystemExit('Could not locate GTK window size setup.')
+s = s.replace(marker, marker + '\n' + realize, 1)
 p.write_text(s)
 PY
 

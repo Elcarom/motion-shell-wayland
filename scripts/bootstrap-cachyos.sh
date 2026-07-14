@@ -17,14 +17,14 @@ core_packages=(
   gnome-keyring libsecret polkit libnotify
   socat jq curl unzip imagemagick python-pillow python-yaml
   ttf-roboto ttf-roboto-mono noto-fonts noto-fonts-emoji
-  papirus-icon-theme bibata-cursor-theme adw-gtk-theme qt5ct qt6ct
+  papirus-icon-theme  adw-gtk-theme qt5ct qt6ct
 )
 
 app_packages=(
   firefox wezterm nautilus gnome-text-editor loupe celluloid amberol
   file-roller gnome-calculator evince gnome-system-monitor baobab
   blueman nm-connection-editor pavucontrol
-  fsearch gnome-font-viewer gucharmap
+   gnome-font-viewer gucharmap
 )
 
 sudo pacman -Syu --needed "${core_packages[@]}" "${app_packages[@]}"

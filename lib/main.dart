@@ -13,7 +13,7 @@ Future<void> main(List<String> args) async {
   try {
     await WaylandLayerSurfaceHost()
         .configure(surface)
-        .timeout(const Duration(seconds: 2));
+        .timeout(const Duration(seconds: 8));
   } on Object {
     // A regular Flutter window is the deliberate development/recovery fallback.
   }
@@ -22,11 +22,14 @@ Future<void> main(List<String> args) async {
       .where((String arg) => arg.startsWith('--wallpaper='))
       .map((String arg) => arg.substring('--wallpaper='.length))
       .firstOrNull;
-  await controller.initialize(wallpaperPath: wallpaper);
-  if (wallpaper != null) {
-    await controller.setWallpaper(wallpaper);
-  }
   runApp(MotionApp(controller: controller, surface: surface));
+
+  unawaited(() async {
+    await controller.initialize(wallpaperPath: wallpaper);
+    if (wallpaper != null) {
+      await controller.setWallpaper(wallpaper);
+    }
+  }());
 }
 
 extension _FirstOrNull<T> on Iterable<T> {
