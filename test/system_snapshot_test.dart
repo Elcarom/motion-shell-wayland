@@ -66,14 +66,12 @@ void main() {
   });
 
   test('legacy scalar audio fields still decode', () {
-    final SystemSnapshot decoded = SystemSnapshot.fromJson(
-      <String, Object?>{
-        'volume': 0.4,
-        'muted': true,
-        'inputVolume': 0.6,
-        'microphoneMuted': true,
-      },
-    );
+    final SystemSnapshot decoded = SystemSnapshot.fromJson(<String, Object?>{
+      'volume': 0.4,
+      'muted': true,
+      'inputVolume': 0.6,
+      'microphoneMuted': true,
+    });
     expect(decoded.outputAudio.volume, 0.4);
     expect(decoded.outputAudio.muted, isTrue);
     expect(decoded.inputAudio.volume, 0.6);
@@ -81,9 +79,9 @@ void main() {
   });
 
   test('unknown enum input degrades to unknown', () {
-    final SystemSnapshot decoded = SystemSnapshot.fromJson(
-      <String, Object?>{'wifi': 'future-state'},
-    );
+    final SystemSnapshot decoded = SystemSnapshot.fromJson(<String, Object?>{
+      'wifi': 'future-state',
+    });
     expect(decoded.wifi, AvailabilityState.unknown);
   });
 }

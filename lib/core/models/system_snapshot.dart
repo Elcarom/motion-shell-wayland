@@ -29,16 +29,11 @@ class SystemSnapshot {
     this.themeMode = 'dark',
     this.reducedMotion = false,
     this.wallpaperPath,
-  })  : outputAudio = outputAudio ??
-            AudioEndpointSnapshot(
-              volume: volume,
-              muted: muted,
-            ),
-        inputAudio = inputAudio ??
-            AudioEndpointSnapshot(
-              volume: inputVolume,
-              muted: microphoneMuted,
-            );
+  }) : outputAudio =
+           outputAudio ?? AudioEndpointSnapshot(volume: volume, muted: muted),
+       inputAudio =
+           inputAudio ??
+           AudioEndpointSnapshot(volume: inputVolume, muted: microphoneMuted);
 
   factory SystemSnapshot.fromJson(Map<String, Object?> json) {
     final Object? outputValue = json['outputAudio'];
@@ -69,8 +64,7 @@ class SystemSnapshot {
       doNotDisturb: json['doNotDisturb'] as bool? ?? false,
       unreadNotifications: (json['unreadNotifications'] as num?)?.toInt() ?? 0,
       screenRecording: json['screenRecording'] as bool? ?? false,
-      themeSeedArgb:
-          (json['themeSeedArgb'] as num?)?.toInt() ?? 0xFF6750A4,
+      themeSeedArgb: (json['themeSeedArgb'] as num?)?.toInt() ?? 0xFF6750A4,
       themeMode: json['themeMode'] as String? ?? 'dark',
       reducedMotion: json['reducedMotion'] as bool? ?? false,
       wallpaperPath: json['wallpaperPath'] as String?,
@@ -130,19 +124,16 @@ class SystemSnapshot {
       activeApplication: activeApplication ?? this.activeApplication,
       wifi: wifi ?? this.wifi,
       bluetooth: bluetooth ?? this.bluetooth,
-      outputAudio: outputAudio ??
-          this.outputAudio.copyWith(
-            volume: volume,
-            muted: muted,
-          ),
-      inputAudio: inputAudio ??
-          this.inputAudio.copyWith(
-            volume: inputVolume,
-            muted: microphoneMuted,
-          ),
+      outputAudio:
+          outputAudio ??
+          this.outputAudio.copyWith(volume: volume, muted: muted),
+      inputAudio:
+          inputAudio ??
+          this.inputAudio.copyWith(volume: inputVolume, muted: microphoneMuted),
       brightness: brightness ?? this.brightness,
-      batteryPercent:
-          clearBatteryPercent ? null : batteryPercent ?? this.batteryPercent,
+      batteryPercent: clearBatteryPercent
+          ? null
+          : batteryPercent ?? this.batteryPercent,
       onBattery: onBattery ?? this.onBattery,
       powerProfile: powerProfile ?? this.powerProfile,
       doNotDisturb: doNotDisturb ?? this.doNotDisturb,
@@ -151,35 +142,36 @@ class SystemSnapshot {
       themeSeedArgb: themeSeedArgb ?? this.themeSeedArgb,
       themeMode: themeMode ?? this.themeMode,
       reducedMotion: reducedMotion ?? this.reducedMotion,
-      wallpaperPath:
-          clearWallpaperPath ? null : wallpaperPath ?? this.wallpaperPath,
+      wallpaperPath: clearWallpaperPath
+          ? null
+          : wallpaperPath ?? this.wallpaperPath,
     );
   }
 
   Map<String, Object?> toJson() => <String, Object?>{
-        'workspace': workspace,
-        'activeApplication': activeApplication,
-        'wifi': wifi.name,
-        'bluetooth': bluetooth.name,
-        'outputAudio': outputAudio.toJson(),
-        'inputAudio': inputAudio.toJson(),
-        // Legacy scalar fields keep older surfaces and state snapshots readable.
-        'volume': volume,
-        'muted': muted,
-        'inputVolume': inputVolume,
-        'microphoneMuted': microphoneMuted,
-        'brightness': brightness,
-        'batteryPercent': batteryPercent,
-        'onBattery': onBattery,
-        'powerProfile': powerProfile,
-        'doNotDisturb': doNotDisturb,
-        'unreadNotifications': unreadNotifications,
-        'screenRecording': screenRecording,
-        'themeSeedArgb': themeSeedArgb,
-        'themeMode': themeMode,
-        'reducedMotion': reducedMotion,
-        'wallpaperPath': wallpaperPath,
-      };
+    'workspace': workspace,
+    'activeApplication': activeApplication,
+    'wifi': wifi.name,
+    'bluetooth': bluetooth.name,
+    'outputAudio': outputAudio.toJson(),
+    'inputAudio': inputAudio.toJson(),
+    // Legacy scalar fields keep older surfaces and state snapshots readable.
+    'volume': volume,
+    'muted': muted,
+    'inputVolume': inputVolume,
+    'microphoneMuted': microphoneMuted,
+    'brightness': brightness,
+    'batteryPercent': batteryPercent,
+    'onBattery': onBattery,
+    'powerProfile': powerProfile,
+    'doNotDisturb': doNotDisturb,
+    'unreadNotifications': unreadNotifications,
+    'screenRecording': screenRecording,
+    'themeSeedArgb': themeSeedArgb,
+    'themeMode': themeMode,
+    'reducedMotion': reducedMotion,
+    'wallpaperPath': wallpaperPath,
+  };
 
   String encode() => jsonEncode(toJson());
 }

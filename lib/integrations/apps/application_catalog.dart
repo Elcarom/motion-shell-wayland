@@ -33,7 +33,9 @@ class ApplicationCatalog {
       if (!await dir.exists()) {
         continue;
       }
-      await for (final FileSystemEntity entity in dir.list(followLinks: false)) {
+      await for (final FileSystemEntity entity in dir.list(
+        followLinks: false,
+      )) {
         if (entity is! File || !entity.path.endsWith('.desktop')) {
           continue;
         }
@@ -61,10 +63,11 @@ class ApplicationCatalog {
 
   List<String> _directories() {
     final String home = Platform.environment['HOME'] ?? '';
-    final String dataHome = Platform.environment['XDG_DATA_HOME'] ??
+    final String dataHome =
+        Platform.environment['XDG_DATA_HOME'] ??
         (home.isEmpty ? '' : '$home/.local/share');
-    final String dataDirs = Platform.environment['XDG_DATA_DIRS'] ??
-        '/usr/local/share:/usr/share';
+    final String dataDirs =
+        Platform.environment['XDG_DATA_DIRS'] ?? '/usr/local/share:/usr/share';
     return <String>[
       if (dataHome.isNotEmpty) '$dataHome/applications',
       ...dataDirs.split(':').map((String value) => '$value/applications'),

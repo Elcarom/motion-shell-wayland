@@ -69,7 +69,9 @@ class QuickSettingsSurface extends StatelessWidget {
                 QuickSettingTile(
                   icon: Icons.do_not_disturb_on_rounded,
                   label: 'Do Not Disturb',
-                  subtitle: state.doNotDisturb ? 'Silencing alerts' : 'Alerts on',
+                  subtitle: state.doNotDisturb
+                      ? 'Silencing alerts'
+                      : 'Alerts on',
                   state: state.doNotDisturb
                       ? AvailabilityState.enabled
                       : AvailabilityState.disabled,
@@ -78,7 +80,9 @@ class QuickSettingsSurface extends StatelessWidget {
                 QuickSettingTile(
                   icon: Icons.dark_mode_rounded,
                   label: 'Dark theme',
-                  subtitle: controller.themeMode == ThemeMode.dark ? 'On' : 'Off',
+                  subtitle: controller.themeMode == ThemeMode.dark
+                      ? 'On'
+                      : 'Off',
                   state: controller.themeMode == ThemeMode.dark
                       ? AvailabilityState.enabled
                       : AvailabilityState.disabled,
@@ -136,7 +140,10 @@ class QuickSettingsSurface extends StatelessWidget {
               onChanged: controller.setBrightness,
             ),
             const SizedBox(height: 18),
-            Text('Power profile', style: Theme.of(context).textTheme.labelLarge),
+            Text(
+              'Power profile',
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
             const SizedBox(height: 10),
             _PowerProfileGroup(
               selectedProfile: state.powerProfile,
@@ -276,15 +283,18 @@ class _AudioControl extends StatelessWidget {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 Text(
                   endpoint.muted
                       ? 'Muted'
                       : '${(endpoint.volume * 100).round()}%',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
                 ),
               ],
             ),
@@ -310,8 +320,8 @@ class _AudioControl extends StatelessWidget {
                               device.id == endpoint.selectedDeviceId
                                   ? Icons.check_rounded
                                   : title == 'Output'
-                                      ? Icons.speaker_rounded
-                                      : Icons.mic_rounded,
+                                  ? Icons.speaker_rounded
+                                  : Icons.mic_rounded,
                             ),
                             const SizedBox(width: 10),
                             Flexible(child: Text(device.name)),
@@ -341,8 +351,8 @@ class _AudioControl extends StatelessWidget {
               Text(
                 'The ${title.toLowerCase()} endpoint is unavailable or needs attention.',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
               ),
             ],
           ],
@@ -378,7 +388,10 @@ class _ExpressiveValueControl extends StatelessWidget {
                 Icon(icon),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 Text('${(value * 100).round()}%'),
               ],

@@ -11,9 +11,9 @@ Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   final SurfaceKind surface = SurfaceKind.fromArgs(args);
   try {
-    await WaylandLayerSurfaceHost().configure(surface).timeout(
-          const Duration(seconds: 2),
-        );
+    await WaylandLayerSurfaceHost()
+        .configure(surface)
+        .timeout(const Duration(seconds: 2));
   } on Object {
     // A regular Flutter window is the deliberate development/recovery fallback.
   }

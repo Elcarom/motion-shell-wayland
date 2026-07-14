@@ -49,10 +49,7 @@ class SystemBarSurface extends StatelessWidget {
               ),
               _ClockButton(onPressed: onOpenNotifications),
               const SizedBox(width: 4),
-              _StatusCluster(
-                state: state,
-                onPressed: onOpenQuickSettings,
-              ),
+              _StatusCluster(state: state, onPressed: onOpenQuickSettings),
             ],
           ),
         ),
@@ -147,14 +144,14 @@ class _ClockButtonState extends State<_ClockButton> {
   }
 
   String _weekday(int weekday) => const <String>[
-        'Mon',
-        'Tue',
-        'Wed',
-        'Thu',
-        'Fri',
-        'Sat',
-        'Sun',
-      ][weekday - 1];
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+    'Sun',
+  ][weekday - 1];
 
   @override
   void dispose() {

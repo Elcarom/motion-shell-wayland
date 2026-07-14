@@ -12,7 +12,7 @@ import '../widgets/surface_frame.dart';
 
 class LauncherSurface extends StatefulWidget {
   const LauncherSurface({super.key, ApplicationCatalog? catalog})
-      : catalog = catalog ?? const ApplicationCatalog();
+    : catalog = catalog ?? const ApplicationCatalog();
 
   final ApplicationCatalog catalog;
 
@@ -49,11 +49,15 @@ class _LauncherSurfaceState extends State<LauncherSurface> {
     if (query.isEmpty) {
       return _applications;
     }
-    return _applications.where((DesktopApplication app) {
-      return app.name.toLowerCase().contains(query) ||
-          (app.comment ?? '').toLowerCase().contains(query) ||
-          app.categories.any((String value) => value.toLowerCase().contains(query));
-    }).toList(growable: false);
+    return _applications
+        .where((DesktopApplication app) {
+          return app.name.toLowerCase().contains(query) ||
+              (app.comment ?? '').toLowerCase().contains(query) ||
+              app.categories.any(
+                (String value) => value.toLowerCase().contains(query),
+              );
+        })
+        .toList(growable: false);
   }
 
   @override
@@ -126,51 +130,56 @@ class _LauncherSurfaceState extends State<LauncherSurface> {
                   ? const _EmptyLauncherState()
                   : LayoutBuilder(
                       key: ValueKey<String>(_query),
-                      builder: (BuildContext context, BoxConstraints constraints) {
-                        if (!_gridMode) {
-                          return ListView.separated(
-                            itemCount: results.length,
-                            separatorBuilder: (_, __) =>
-                                const SizedBox(height: 6),
-                            itemBuilder: (BuildContext context, int index) {
-                              final DesktopApplication app = results[index];
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  child: Text(
-                                    app.name.characters.first.toUpperCase(),
-                                  ),
-                                ),
-                                title: Text(app.name),
-                                subtitle: Text(app.comment ?? 'Application'),
-                                trailing:
-                                    const Icon(Icons.arrow_forward_rounded),
-                                onTap: () => widget.catalog.launch(app),
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                            if (!_gridMode) {
+                              return ListView.separated(
+                                itemCount: results.length,
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(height: 6),
+                                itemBuilder: (BuildContext context, int index) {
+                                  final DesktopApplication app = results[index];
+                                  return ListTile(
+                                    leading: CircleAvatar(
+                                      child: Text(
+                                        app.name.characters.first.toUpperCase(),
+                                      ),
+                                    ),
+                                    title: Text(app.name),
+                                    subtitle: Text(
+                                      app.comment ?? 'Application',
+                                    ),
+                                    trailing: const Icon(
+                                      Icons.arrow_forward_rounded,
+                                    ),
+                                    onTap: () => widget.catalog.launch(app),
+                                  );
+                                },
                               );
-                            },
-                          );
-                        }
-                        final int columns = switch (constraints.maxWidth) {
-                          < 640 => 4,
-                          < 900 => 6,
-                          _ => 8,
-                        };
-                        return GridView.builder(
-                          itemCount: results.length,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: columns,
-                            mainAxisSpacing: 12,
-                            crossAxisSpacing: 12,
-                            childAspectRatio: 0.92,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            final DesktopApplication app = results[index];
-                            return _ApplicationTile(
-                              app: app,
-                              onPressed: () => widget.catalog.launch(app),
+                            }
+                            final int columns = switch (constraints.maxWidth) {
+                              < 640 => 4,
+                              < 900 => 6,
+                              _ => 8,
+                            };
+                            return GridView.builder(
+                              itemCount: results.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: columns,
+                                    mainAxisSpacing: 12,
+                                    crossAxisSpacing: 12,
+                                    childAspectRatio: 0.92,
+                                  ),
+                              itemBuilder: (BuildContext context, int index) {
+                                final DesktopApplication app = results[index];
+                                return _ApplicationTile(
+                                  app: app,
+                                  onPressed: () => widget.catalog.launch(app),
+                                );
+                              },
                             );
                           },
-                        );
-                      },
                     ),
             ),
           ),
@@ -248,11 +257,35 @@ class _EmptyLauncherState extends StatelessWidget {
 
 const List<DesktopApplication> _fallbackApps = <DesktopApplication>[
   DesktopApplication(id: 'firefox', name: 'Firefox', exec: 'firefox'),
-  DesktopApplication(id: 'org.wezfurlong.wezterm', name: 'WezTerm', exec: 'wezterm'),
+  DesktopApplication(
+    id: 'org.wezfurlong.wezterm',
+    name: 'WezTerm',
+    exec: 'wezterm',
+  ),
   DesktopApplication(id: 'org.gnome.Nautilus', name: 'Files', exec: 'nautilus'),
-  DesktopApplication(id: 'org.gnome.TextEditor', name: 'Text Editor', exec: 'gnome-text-editor'),
-  DesktopApplication(id: 'org.gnome.Calculator', name: 'Calculator', exec: 'gnome-calculator'),
-  DesktopApplication(id: 'org.gnome.Loupe', name: 'Image Viewer', exec: 'loupe'),
-  DesktopApplication(id: 'io.github.celluloid_player.Celluloid', name: 'Videos', exec: 'celluloid'),
-  DesktopApplication(id: 'motion-settings', name: 'Settings', exec: 'motion-shell --surface=settings'),
+  DesktopApplication(
+    id: 'org.gnome.TextEditor',
+    name: 'Text Editor',
+    exec: 'gnome-text-editor',
+  ),
+  DesktopApplication(
+    id: 'org.gnome.Calculator',
+    name: 'Calculator',
+    exec: 'gnome-calculator',
+  ),
+  DesktopApplication(
+    id: 'org.gnome.Loupe',
+    name: 'Image Viewer',
+    exec: 'loupe',
+  ),
+  DesktopApplication(
+    id: 'io.github.celluloid_player.Celluloid',
+    name: 'Videos',
+    exec: 'celluloid',
+  ),
+  DesktopApplication(
+    id: 'motion-settings',
+    name: 'Settings',
+    exec: 'motion-shell --surface=settings',
+  ),
 ];

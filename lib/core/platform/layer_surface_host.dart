@@ -9,7 +9,7 @@ abstract interface class LayerSurfaceHost {
 
 class WaylandLayerSurfaceHost implements LayerSurfaceHost {
   WaylandLayerSurfaceHost({WaylandLayerShell? plugin})
-      : _plugin = plugin ?? WaylandLayerShell();
+    : _plugin = plugin ?? WaylandLayerShell();
 
   final WaylandLayerShell _plugin;
 
@@ -63,68 +63,68 @@ class _SurfaceSpec {
   factory _SurfaceSpec.forKind(SurfaceKind kind) {
     return switch (kind) {
       SurfaceKind.bar => const _SurfaceSpec(
-          width: 1920,
-          height: 64,
-          layer: ShellLayer.layerTop,
-          keyboardMode: ShellKeyboardMode.keyboardModeNone,
-          top: true,
-          right: true,
-          bottom: false,
-          left: true,
-          margins: <ShellEdge, int>{
-            ShellEdge.edgeTop: 8,
-            ShellEdge.edgeLeft: 12,
-            ShellEdge.edgeRight: 12,
-          },
-          autoExclusive: true,
-        ),
+        width: 1920,
+        height: 64,
+        layer: ShellLayer.layerTop,
+        keyboardMode: ShellKeyboardMode.keyboardModeNone,
+        top: true,
+        right: true,
+        bottom: false,
+        left: true,
+        margins: <ShellEdge, int>{
+          ShellEdge.edgeTop: 8,
+          ShellEdge.edgeLeft: 12,
+          ShellEdge.edgeRight: 12,
+        },
+        autoExclusive: true,
+      ),
       SurfaceKind.osd => const _SurfaceSpec(
-          width: 420,
-          height: 112,
-          layer: ShellLayer.layerOverlay,
-          keyboardMode: ShellKeyboardMode.keyboardModeNone,
-          top: false,
-          right: false,
-          bottom: true,
-          left: false,
-          margins: <ShellEdge, int>{ShellEdge.edgeBottom: 48},
-        ),
-      SurfaceKind.quickSettings || SurfaceKind.notifications =>
-        const _SurfaceSpec(
-          width: 520,
-          height: 820,
-          layer: ShellLayer.layerOverlay,
-          keyboardMode: ShellKeyboardMode.keyboardModeOnDemand,
-          top: true,
-          right: true,
-          bottom: false,
-          left: false,
-          margins: <ShellEdge, int>{
-            ShellEdge.edgeTop: 76,
-            ShellEdge.edgeRight: 16,
-          },
-        ),
+        width: 420,
+        height: 112,
+        layer: ShellLayer.layerOverlay,
+        keyboardMode: ShellKeyboardMode.keyboardModeNone,
+        top: false,
+        right: false,
+        bottom: true,
+        left: false,
+        margins: <ShellEdge, int>{ShellEdge.edgeBottom: 48},
+      ),
+      SurfaceKind.quickSettings ||
+      SurfaceKind.notifications => const _SurfaceSpec(
+        width: 520,
+        height: 820,
+        layer: ShellLayer.layerOverlay,
+        keyboardMode: ShellKeyboardMode.keyboardModeOnDemand,
+        top: true,
+        right: true,
+        bottom: false,
+        left: false,
+        margins: <ShellEdge, int>{
+          ShellEdge.edgeTop: 76,
+          ShellEdge.edgeRight: 16,
+        },
+      ),
       SurfaceKind.launcher ||
       SurfaceKind.search ||
       SurfaceKind.overview => const _SurfaceSpec(
-          width: 1280,
-          height: 800,
-          layer: ShellLayer.layerOverlay,
-          keyboardMode: ShellKeyboardMode.keyboardModeExclusive,
-          top: true,
-          right: true,
-          bottom: true,
-          left: true,
-          margins: <ShellEdge, int>{
-            ShellEdge.edgeTop: 72,
-            ShellEdge.edgeRight: 24,
-            ShellEdge.edgeBottom: 24,
-            ShellEdge.edgeLeft: 24,
-          },
-        ),
+        width: 1280,
+        height: 800,
+        layer: ShellLayer.layerOverlay,
+        keyboardMode: ShellKeyboardMode.keyboardModeExclusive,
+        top: true,
+        right: true,
+        bottom: true,
+        left: true,
+        margins: <ShellEdge, int>{
+          ShellEdge.edgeTop: 72,
+          ShellEdge.edgeRight: 24,
+          ShellEdge.edgeBottom: 24,
+          ShellEdge.edgeLeft: 24,
+        },
+      ),
       SurfaceKind.showcase || SurfaceKind.settings => throw StateError(
-          '$kind does not use layer shell',
-        ),
+        '$kind does not use layer shell',
+      ),
     };
   }
 

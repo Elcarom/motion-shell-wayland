@@ -29,15 +29,13 @@ class MotionActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget content = child ??
+    final Widget content =
+        child ??
         Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            if (icon != null) ...<Widget>[
-              Icon(icon),
-              const SizedBox(width: 8),
-            ],
+            if (icon != null) ...<Widget>[Icon(icon), const SizedBox(width: 8)],
             Flexible(child: Text(label!)),
           ],
         );
@@ -170,10 +168,8 @@ class MotionSplitButton<T> extends StatelessWidget {
       selectedValue: selectedValue,
       items: items
           .map(
-            (MotionMenuItem<T> item) => M3ESplitButtonItem<T>(
-              value: item.value,
-              child: item.child,
-            ),
+            (MotionMenuItem<T> item) =>
+                M3ESplitButtonItem<T>(value: item.value, child: item.child),
           )
           .toList(growable: false),
       onSelected: onSelected,

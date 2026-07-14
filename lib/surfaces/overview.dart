@@ -61,36 +61,54 @@ class OverviewSurface extends StatelessWidget {
                 const SizedBox(width: 16),
                 Expanded(
                   child: LayoutBuilder(
-                    builder: (BuildContext context, BoxConstraints constraints) {
-                      final int columns = constraints.maxWidth > 800 ? 3 : 2;
-                      return GridView.builder(
-                        itemCount: 6,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: columns,
-                          mainAxisSpacing: 14,
-                          crossAxisSpacing: 14,
-                          childAspectRatio: 1.5,
-                        ),
-                        itemBuilder: (BuildContext context, int index) {
-                          final int workspace = index + 1;
-                          return _WorkspaceCard(
-                            workspace: workspace,
-                            active: controller.snapshot.workspace == '$workspace',
-                            windows: index == 0
-                                ? const <_WindowPreview>[
-                                    _WindowPreview('Firefox', Icons.public_rounded),
-                                    _WindowPreview('Editor', Icons.code_rounded),
-                                  ]
-                                : index == 1
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                          final int columns = constraints.maxWidth > 800
+                              ? 3
+                              : 2;
+                          return GridView.builder(
+                            itemCount: 6,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: columns,
+                                  mainAxisSpacing: 14,
+                                  crossAxisSpacing: 14,
+                                  childAspectRatio: 1.5,
+                                ),
+                            itemBuilder: (BuildContext context, int index) {
+                              final int workspace = index + 1;
+                              return _WorkspaceCard(
+                                workspace: workspace,
+                                active:
+                                    controller.snapshot.workspace ==
+                                    '$workspace',
+                                windows: index == 0
                                     ? const <_WindowPreview>[
-                                        _WindowPreview('Files', Icons.folder_rounded),
+                                        _WindowPreview(
+                                          'Firefox',
+                                          Icons.public_rounded,
+                                        ),
+                                        _WindowPreview(
+                                          'Editor',
+                                          Icons.code_rounded,
+                                        ),
+                                      ]
+                                    : index == 1
+                                    ? const <_WindowPreview>[
+                                        _WindowPreview(
+                                          'Files',
+                                          Icons.folder_rounded,
+                                        ),
                                       ]
                                     : const <_WindowPreview>[],
-                            onActivate: () => hyprland.dispatch('workspace', '$workspace'),
+                                onActivate: () => hyprland.dispatch(
+                                  'workspace',
+                                  '$workspace',
+                                ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
                   ),
                 ),
               ],
@@ -130,7 +148,10 @@ class _WorkspaceCard extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text('Space $workspace', style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    'Space $workspace',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                   const Spacer(),
                   if (active)
                     const Icon(Icons.radio_button_checked_rounded)
@@ -144,9 +165,8 @@ class _WorkspaceCard extends StatelessWidget {
                     ? Center(
                         child: Text(
                           'Room to begin',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: colors.onSurfaceVariant,
-                              ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: colors.onSurfaceVariant),
                         ),
                       )
                     : Row(
@@ -158,7 +178,9 @@ class _WorkspaceCard extends StatelessWidget {
                                   child: DecoratedBox(
                                     decoration: BoxDecoration(
                                       color: colors.surface,
-                                      borderRadius: BorderRadius.circular(MotionTokens.radiusMedium),
+                                      borderRadius: BorderRadius.circular(
+                                        MotionTokens.radiusMedium,
+                                      ),
                                     ),
                                     child: Center(
                                       child: Column(

@@ -31,10 +31,8 @@ class MotionTheme {
       seedColor: seed,
       brightness: brightness,
     );
-    final TextTheme textTheme = ThemeData(
-      useMaterial3: true,
-      colorScheme: scheme,
-    ).textTheme.apply(
+    final TextTheme textTheme =
+        ThemeData(useMaterial3: true, colorScheme: scheme).textTheme.apply(
           fontFamily: 'Roboto',
           displayColor: scheme.onSurface,
           bodyColor: scheme.onSurface,

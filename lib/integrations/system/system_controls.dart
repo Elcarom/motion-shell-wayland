@@ -19,11 +19,12 @@ class SystemControls {
     String powerProfile = previous.powerProfile;
 
     if (await runner.exists('nmcli')) {
-      final ProcessResultValue result = await runner.run(
-        'nmcli',
-        <String>['-t', '-f', 'WIFI', 'general'],
-        check: false,
-      );
+      final ProcessResultValue result = await runner.run('nmcli', <String>[
+        '-t',
+        '-f',
+        'WIFI',
+        'general',
+      ], check: false);
       wifi = result.stdout.trim() == 'enabled'
           ? AvailabilityState.enabled
           : AvailabilityState.disabled;
@@ -75,7 +76,9 @@ class SystemControls {
         <String>['-m'],
         check: false,
       );
-      final RegExpMatch? match = RegExp(r',([0-9]+)%').firstMatch(result.stdout);
+      final RegExpMatch? match = RegExp(
+        r',([0-9]+)%',
+      ).firstMatch(result.stdout);
       brightness =
           (double.tryParse(match?.group(1) ?? '') ?? brightness * 100) / 100;
     }
@@ -104,11 +107,10 @@ class SystemControls {
     required String target,
     required List<AudioDevice> devices,
   }) async {
-    final ProcessResultValue result = await runner.run(
-      'wpctl',
-      <String>['get-volume', target],
-      check: false,
-    );
+    final ProcessResultValue result = await runner.run('wpctl', <String>[
+      'get-volume',
+      target,
+    ], check: false);
     if (!result.succeeded) {
       return previous.copyWith(
         availability: AvailabilityState.error,
@@ -148,7 +150,11 @@ class SystemControls {
   }
 
   Future<void> setWifi(bool enabled) async {
-    await runner.run('nmcli', <String>['radio', 'wifi', enabled ? 'on' : 'off']);
+    await runner.run('nmcli', <String>[
+      'radio',
+      'wifi',
+      enabled ? 'on' : 'off',
+    ]);
   }
 
   Future<void> setBluetooth(bool enabled) async {
@@ -156,17 +162,11 @@ class SystemControls {
   }
 
   Future<void> setOutputVolume(double value, {String? deviceId}) {
-    return _setAudioVolume(
-      deviceId ?? '@DEFAULT_AUDIO_SINK@',
-      value,
-    );
+    return _setAudioVolume(deviceId ?? '@DEFAULT_AUDIO_SINK@', value);
   }
 
   Future<void> setInputVolume(double value, {String? deviceId}) {
-    return _setAudioVolume(
-      deviceId ?? '@DEFAULT_AUDIO_SOURCE@',
-      value,
-    );
+    return _setAudioVolume(deviceId ?? '@DEFAULT_AUDIO_SOURCE@', value);
   }
 
   Future<void> setVolume(double value) => setOutputVolume(value);
@@ -174,10 +174,11 @@ class SystemControls {
   Future<void> _setAudioVolume(String target, double value) async {
     _validateAudioTarget(target);
     final double clamped = math.max(0, math.min(1.5, value));
-    await runner.run(
-      'wpctl',
-      <String>['set-volume', target, clamped.toStringAsFixed(2)],
-    );
+    await runner.run('wpctl', <String>[
+      'set-volume',
+      target,
+      clamped.toStringAsFixed(2),
+    ]);
     await runner.run('wpctl', <String>['set-mute', target, '0']);
   }
 
@@ -193,10 +194,7 @@ class SystemControls {
 
   Future<void> _toggleAudioMute(String target) async {
     _validateAudioTarget(target);
-    await runner.run(
-      'wpctl',
-      <String>['set-mute', target, 'toggle'],
-    );
+    await runner.run('wpctl', <String>['set-mute', target, 'toggle']);
   }
 
   Future<void> setOutputDevice(String deviceId) {
@@ -216,10 +214,7 @@ class SystemControls {
     await runner.run('wpctl', <String>['set-default', deviceId]);
   }
 
-  void _validateAudioTarget(
-    String value, {
-    bool allowDefaultAliases = true,
-  }) {
+  void _validateAudioTarget(String value, {bool allowDefaultAliases = true}) {
     const Set<String> aliases = <String>{
       '@DEFAULT_AUDIO_SINK@',
       '@DEFAULT_AUDIO_SOURCE@',
@@ -243,13 +238,20 @@ class SystemControls {
       'performance',
     };
     if (!allowed.contains(profile)) {
-      throw ArgumentError.value(profile, 'profile', 'Unsupported power profile');
+      throw ArgumentError.value(
+        profile,
+        'profile',
+        'Unsupported power profile',
+      );
     }
     await runner.run('powerprofilesctl', <String>['set', profile]);
   }
 
   Future<String> screenshot({bool region = true}) async {
-    final String timestamp = DateTime.now().toIso8601String().replaceAll(':', '-');
+    final String timestamp = DateTime.now().toIso8601String().replaceAll(
+      ':',
+      '-',
+    );
     final String home = Platform.environment['HOME'] ?? '/tmp';
     final String directory = '$home/Pictures/Screenshots';
     await runner.run('mkdir', <String>['-p', directory]);
@@ -263,10 +265,7 @@ class SystemControls {
       if (!selection.succeeded || selection.stdout.trim().isEmpty) {
         throw const ProcessFailure('Screenshot selection was cancelled');
       }
-      await runner.run(
-        'grim',
-        <String>['-g', selection.stdout.trim(), output],
-      );
+      await runner.run('grim', <String>['-g', selection.stdout.trim(), output]);
     } else {
       await runner.run('grim', <String>[output]);
     }

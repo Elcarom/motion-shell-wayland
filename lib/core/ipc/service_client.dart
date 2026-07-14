@@ -28,17 +28,18 @@ class ServiceClient {
         socketPath,
         type: InternetAddressType.unix,
       );
-      _socket = await Socket.connect(address, 0).timeout(
-        const Duration(milliseconds: 600),
-      );
+      _socket = await Socket.connect(
+        address,
+        0,
+      ).timeout(const Duration(milliseconds: 600));
       _subscription = _socket!
           .transform(utf8.decoder)
           .transform(const LineSplitter())
           .listen(
-        _handleLine,
-        onDone: _handleDisconnect,
-        onError: (_) => _handleDisconnect(),
-      );
+            _handleLine,
+            onDone: _handleDisconnect,
+            onError: (_) => _handleDisconnect(),
+          );
       await call('subscribe');
       return true;
     } on Object {
@@ -59,11 +60,13 @@ class ServiceClient {
     final Completer<Object?> completer = Completer<Object?>();
     _pending[id] = completer;
     try {
-      socket.writeln(jsonEncode(<String, Object?>{
-        'id': id,
-        'method': method,
-        'params': params,
-      }));
+      socket.writeln(
+        jsonEncode(<String, Object?>{
+          'id': id,
+          'method': method,
+          'params': params,
+        }),
+      );
       await socket.flush();
       return await completer.future.timeout(
         const Duration(seconds: 5),
@@ -84,8 +87,9 @@ class ServiceClient {
       if (decodedValue is! Map) {
         return;
       }
-      final Map<String, Object?> decoded =
-          Map<String, Object?>.from(decodedValue);
+      final Map<String, Object?> decoded = Map<String, Object?>.from(
+        decodedValue,
+      );
       if (decoded['event'] == 'snapshot' && decoded['data'] is Map) {
         _snapshots.add(
           SystemSnapshot.fromJson(
@@ -103,8 +107,9 @@ class ServiceClient {
         return;
       }
       if (decoded['error'] is Map) {
-        final Map<String, Object?> error =
-            Map<String, Object?>.from(decoded['error']! as Map);
+        final Map<String, Object?> error = Map<String, Object?>.from(
+          decoded['error']! as Map,
+        );
         completer.completeError(
           StateError(error['message'] as String? ?? 'State service error'),
         );

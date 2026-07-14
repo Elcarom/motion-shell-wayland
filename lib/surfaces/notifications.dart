@@ -69,7 +69,9 @@ class _NotificationsSurfaceState extends State<NotificationsSurface> {
                 ),
                 MotionActionButton(
                   variant: MotionButtonVariant.text,
-                  onPressed: _items.isEmpty ? null : () => setState(_items.clear),
+                  onPressed: _items.isEmpty
+                      ? null
+                      : () => setState(_items.clear),
                   label: 'Clear all',
                 ),
               ],
@@ -91,7 +93,9 @@ class _NotificationsSurfaceState extends State<NotificationsSurface> {
                         background: DecoratedBox(
                           decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.errorContainer,
-                            borderRadius: BorderRadius.circular(MotionTokens.radiusLarge),
+                            borderRadius: BorderRadius.circular(
+                              MotionTokens.radiusLarge,
+                            ),
                           ),
                           child: const Align(
                             alignment: Alignment.centerRight,
@@ -146,9 +150,15 @@ class _NotificationCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(item.app, style: Theme.of(context).textTheme.labelMedium),
+                      Text(
+                        item.app,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
                       const SizedBox(height: 2),
-                      Text(item.title, style: Theme.of(context).textTheme.titleMedium),
+                      Text(
+                        item.title,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       const SizedBox(height: 4),
                       Text(item.body),
                     ],
@@ -171,10 +181,7 @@ class _NotificationCard extends StatelessWidget {
                   label: 'Open',
                 ),
                 const SizedBox(width: 4),
-                MotionActionButton(
-                  onPressed: () {},
-                  label: 'Action',
-                ),
+                MotionActionButton(onPressed: () {}, label: 'Action'),
               ],
             ),
           ],

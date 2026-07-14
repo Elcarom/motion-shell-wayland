@@ -18,19 +18,64 @@ class SettingsSurface extends StatefulWidget {
 class _SettingsSurfaceState extends State<SettingsSurface> {
   int _selected = 0;
 
-  static const List<_SettingsDestination> _destinations = <_SettingsDestination>[
-    _SettingsDestination(Icons.palette_outlined, Icons.palette_rounded, 'Appearance'),
-    _SettingsDestination(Icons.notifications_outlined, Icons.notifications_rounded, 'Notifications'),
-    _SettingsDestination(Icons.tune_outlined, Icons.tune_rounded, 'Quick settings'),
-    _SettingsDestination(Icons.volume_up_outlined, Icons.volume_up_rounded, 'Audio'),
-    _SettingsDestination(Icons.monitor_outlined, Icons.monitor_rounded, 'Displays'),
-    _SettingsDestination(Icons.keyboard_outlined, Icons.keyboard_rounded, 'Keyboard'),
-    _SettingsDestination(Icons.space_dashboard_outlined, Icons.space_dashboard_rounded, 'Workspaces'),
-    _SettingsDestination(Icons.battery_saver_outlined, Icons.battery_saver_rounded, 'Power'),
-    _SettingsDestination(Icons.accessibility_new_outlined, Icons.accessibility_new_rounded, 'Accessibility'),
-    _SettingsDestination(Icons.info_outline_rounded, Icons.info_rounded, 'About'),
-    _SettingsDestination(Icons.monitor_heart_outlined, Icons.monitor_heart_rounded, 'Diagnostics'),
-  ];
+  static const List<_SettingsDestination> _destinations =
+      <_SettingsDestination>[
+        _SettingsDestination(
+          Icons.palette_outlined,
+          Icons.palette_rounded,
+          'Appearance',
+        ),
+        _SettingsDestination(
+          Icons.notifications_outlined,
+          Icons.notifications_rounded,
+          'Notifications',
+        ),
+        _SettingsDestination(
+          Icons.tune_outlined,
+          Icons.tune_rounded,
+          'Quick settings',
+        ),
+        _SettingsDestination(
+          Icons.volume_up_outlined,
+          Icons.volume_up_rounded,
+          'Audio',
+        ),
+        _SettingsDestination(
+          Icons.monitor_outlined,
+          Icons.monitor_rounded,
+          'Displays',
+        ),
+        _SettingsDestination(
+          Icons.keyboard_outlined,
+          Icons.keyboard_rounded,
+          'Keyboard',
+        ),
+        _SettingsDestination(
+          Icons.space_dashboard_outlined,
+          Icons.space_dashboard_rounded,
+          'Workspaces',
+        ),
+        _SettingsDestination(
+          Icons.battery_saver_outlined,
+          Icons.battery_saver_rounded,
+          'Power',
+        ),
+        _SettingsDestination(
+          Icons.accessibility_new_outlined,
+          Icons.accessibility_new_rounded,
+          'Accessibility',
+        ),
+        _SettingsDestination(
+          Icons.info_outline_rounded,
+          Icons.info_rounded,
+          'About',
+        ),
+        _SettingsDestination(
+          Icons.monitor_heart_outlined,
+          Icons.monitor_heart_rounded,
+          'Diagnostics',
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +105,16 @@ class _SettingsSurfaceState extends State<SettingsSurface> {
                   groupAlignment: -1,
                   destinations: _destinations
                       .map(
-                        (_SettingsDestination item) => NavigationRailDestination(
-                          icon: Icon(item.icon),
-                          selectedIcon: Icon(item.selectedIcon),
-                          label: Text(item.label),
-                        ),
+                        (_SettingsDestination item) =>
+                            NavigationRailDestination(
+                              icon: Icon(item.icon),
+                              selectedIcon: Icon(item.selectedIcon),
+                              label: Text(item.label),
+                            ),
                       )
                       .toList(growable: false),
-                  onDestinationSelected: (int value) => setState(() => _selected = value),
+                  onDestinationSelected: (int value) =>
+                      setState(() => _selected = value),
                 ),
               Expanded(
                 child: AnimatedSwitcher(
@@ -95,7 +142,8 @@ class _SettingsSurfaceState extends State<SettingsSurface> {
                         ),
                       )
                       .toList(growable: false),
-                  onDestinationSelected: (int value) => setState(() => _selected = value),
+                  onDestinationSelected: (int value) =>
+                      setState(() => _selected = value),
                 ),
         );
       },
@@ -158,7 +206,7 @@ class _SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (destination.label != 'Appearance'  &&
+    if (destination.label != 'Appearance' &&
         destination.label != 'Accessibility' &&
         destination.label != 'Diagnostics') {
       return _DeferredSettingsPage(destination: destination);
@@ -169,7 +217,8 @@ class _SettingsPage extends StatelessWidget {
         SectionHeader(
           title: destination.label,
           subtitle: switch (destination.label) {
-            'Appearance' => 'Wallpaper-driven color, theme, and desktop identity',
+            'Appearance' =>
+              'Wallpaper-driven color, theme, and desktop identity',
             'Accessibility' => 'Motion, contrast, scale, and input preferences',
             _ => 'Service health and recovery information',
           },
@@ -199,16 +248,27 @@ class _SettingsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Current seed', style: Theme.of(context).textTheme.titleMedium),
+                  Text(
+                    'Current seed',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                   const SizedBox(height: 14),
                   Wrap(
                     spacing: 10,
                     runSpacing: 10,
                     children: <Widget>[
-                      for (final double opacity in <double>[1, .82, .64, .46, .28])
+                      for (final double opacity in <double>[
+                        1,
+                        .82,
+                        .64,
+                        .46,
+                        .28,
+                      ])
                         CircleAvatar(
                           radius: 22,
-                          backgroundColor: controller.seed.withValues(alpha: opacity),
+                          backgroundColor: controller.seed.withValues(
+                            alpha: opacity,
+                          ),
                         ),
                     ],
                   ),
@@ -221,7 +281,9 @@ class _SettingsPage extends StatelessWidget {
             child: SwitchListTile(
               secondary: const Icon(Icons.motion_photos_off_rounded),
               title: const Text('Reduce motion'),
-              subtitle: const Text('Replaces spatial transitions with immediate state changes.'),
+              subtitle: const Text(
+                'Replaces spatial transitions with immediate state changes.',
+              ),
               value: controller.reduceMotion,
               onChanged: controller.setReducedMotion,
             ),
@@ -239,7 +301,9 @@ class _SettingsPage extends StatelessWidget {
             child: ListTile(
               leading: Icon(Icons.keyboard_rounded),
               title: Text('Keyboard navigation'),
-              subtitle: Text('Focus traversal, Escape/back behavior, and shortcuts enabled.'),
+              subtitle: Text(
+                'Focus traversal, Escape/back behavior, and shortcuts enabled.',
+              ),
             ),
           ),
         ] else ...<Widget>[
@@ -336,7 +400,10 @@ class _DeferredSettingsPage extends StatelessWidget {
               children: <Widget>[
                 Icon(destination.selectedIcon, size: 48),
                 const SizedBox(height: 16),
-                Text(destination.label, style: Theme.of(context).textTheme.headlineSmall),
+                Text(
+                  destination.label,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 const SizedBox(height: 8),
                 const Text(
                   'This section is represented in the architecture and navigation, but only functional prototype controls are exposed.',
@@ -352,7 +419,11 @@ class _DeferredSettingsPage extends StatelessWidget {
 }
 
 class _DiagnosticTile extends StatelessWidget {
-  const _DiagnosticTile({required this.icon, required this.title, required this.status});
+  const _DiagnosticTile({
+    required this.icon,
+    required this.title,
+    required this.status,
+  });
 
   final IconData icon;
   final String title;

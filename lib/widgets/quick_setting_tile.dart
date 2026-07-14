@@ -34,9 +34,9 @@ class QuickSettingTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final Widget stateIcon = switch (state) {
       AvailabilityState.loading => const LoadingIndicatorM3E(
-          constraints: BoxConstraints.tightFor(width: 28, height: 28),
-          semanticLabel: 'Updating quick setting',
-        ),
+        constraints: BoxConstraints.tightFor(width: 28, height: 28),
+        semanticLabel: 'Updating quick setting',
+      ),
       AvailabilityState.error => const Icon(Icons.error_outline_rounded),
       _ => Icon(icon),
     };

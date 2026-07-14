@@ -28,10 +28,10 @@ class AudioDevice {
   }
 
   Map<String, Object?> toJson() => <String, Object?>{
-        'id': id,
-        'name': name,
-        'isDefault': isDefault,
-      };
+    'id': id,
+    'name': name,
+    'isDefault': isDefault,
+  };
 }
 
 class AudioEndpointSnapshot {
@@ -47,18 +47,15 @@ class AudioEndpointSnapshot {
     final Object? devicesValue = json['devices'];
     final List<AudioDevice> devices = devicesValue is List
         ? devicesValue
-            .whereType<Map>()
-            .map(
-              (Map<dynamic, dynamic> item) => AudioDevice.fromJson(
-                Map<String, Object?>.from(item),
-              ),
-            )
-            .toList(growable: false)
+              .whereType<Map>()
+              .map(
+                (Map<dynamic, dynamic> item) =>
+                    AudioDevice.fromJson(Map<String, Object?>.from(item)),
+              )
+              .toList(growable: false)
         : const <AudioDevice>[];
     return AudioEndpointSnapshot(
-      availability: AvailabilityState.fromName(
-        json['availability'] as String?,
-      ),
+      availability: AvailabilityState.fromName(json['availability'] as String?),
       devices: devices,
       selectedDeviceId: json['selectedDeviceId'] as String?,
       volume: (json['volume'] as num?)?.toDouble() ?? 0.5,
@@ -114,19 +111,18 @@ class AudioEndpointSnapshot {
       selectedDeviceId: deviceId,
       devices: devices
           .map(
-            (AudioDevice device) => device.copyWith(
-              isDefault: device.id == deviceId,
-            ),
+            (AudioDevice device) =>
+                device.copyWith(isDefault: device.id == deviceId),
           )
           .toList(growable: false),
     );
   }
 
   Map<String, Object?> toJson() => <String, Object?>{
-        'availability': availability.name,
-        'devices': devices.map((AudioDevice item) => item.toJson()).toList(),
-        'selectedDeviceId': selectedDeviceId,
-        'volume': volume,
-        'muted': muted,
-      };
+    'availability': availability.name,
+    'devices': devices.map((AudioDevice item) => item.toJson()).toList(),
+    'selectedDeviceId': selectedDeviceId,
+    'volume': volume,
+    'muted': muted,
+  };
 }

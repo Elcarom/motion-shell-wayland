@@ -12,9 +12,9 @@ class MotionController extends ChangeNotifier {
     ServiceClient? serviceClient,
     SystemControls? controls,
     DynamicColorService? dynamicColor,
-  })  : _serviceClient = serviceClient ?? ServiceClient(),
-        _controls = controls ?? const SystemControls(),
-        _dynamicColor = dynamicColor ?? const DynamicColorService();
+  }) : _serviceClient = serviceClient ?? ServiceClient(),
+       _controls = controls ?? const SystemControls(),
+       _dynamicColor = dynamicColor ?? const DynamicColorService();
 
   final ServiceClient _serviceClient;
   final SystemControls _controls;
@@ -81,9 +81,9 @@ class MotionController extends ChangeNotifier {
     _themeMode = mode;
     _snapshot = _snapshot.copyWith(themeMode: mode.name);
     notifyListeners();
-    unawaited(_sendPreference('theme.mode', <String, Object?>{
-      'mode': mode.name,
-    }));
+    unawaited(
+      _sendPreference('theme.mode', <String, Object?>{'mode': mode.name}),
+    );
   }
 
   void setReducedMotion(bool value) {
@@ -91,10 +91,9 @@ class MotionController extends ChangeNotifier {
     _snapshot = _snapshot.copyWith(reducedMotion: value);
     notifyListeners();
     unawaited(
-      _sendPreference(
-        'accessibility.reducedMotion',
-        <String, Object?>{'enabled': value},
-      ),
+      _sendPreference('accessibility.reducedMotion', <String, Object?>{
+        'enabled': value,
+      }),
     );
   }
 
@@ -108,10 +107,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     if (_serviceConnected) {
       try {
-        await _serviceClient.call(
-          'appearance.wallpaper',
-          <String, Object?>{'path': path},
-        );
+        await _serviceClient.call('appearance.wallpaper', <String, Object?>{
+          'path': path,
+        });
       } on Object catch (error) {
         _lastError = error.toString();
         notifyListeners();
@@ -137,9 +135,7 @@ class MotionController extends ChangeNotifier {
   void setDoNotDisturb(bool value) {
     _snapshot = _snapshot.copyWith(doNotDisturb: value);
     notifyListeners();
-    unawaited(
-      _sendPreference('dnd.set', <String, Object?>{'enabled': value}),
-    );
+    unawaited(_sendPreference('dnd.set', <String, Object?>{'enabled': value}));
   }
 
   Future<void> setWifi(bool value) async {
@@ -147,10 +143,9 @@ class MotionController extends ChangeNotifier {
       pending: _snapshot.copyWith(wifi: AvailabilityState.loading),
       action: () async {
         if (_serviceConnected) {
-          await _serviceClient.call(
-            'wifi.set',
-            <String, Object?>{'enabled': value},
-          );
+          await _serviceClient.call('wifi.set', <String, Object?>{
+            'enabled': value,
+          });
         } else {
           await _controls.setWifi(value);
         }
@@ -166,17 +161,17 @@ class MotionController extends ChangeNotifier {
       pending: _snapshot.copyWith(bluetooth: AvailabilityState.loading),
       action: () async {
         if (_serviceConnected) {
-          await _serviceClient.call(
-            'bluetooth.set',
-            <String, Object?>{'enabled': value},
-          );
+          await _serviceClient.call('bluetooth.set', <String, Object?>{
+            'enabled': value,
+          });
         } else {
           await _controls.setBluetooth(value);
         }
       },
       success: _snapshot.copyWith(
-        bluetooth:
-            value ? AvailabilityState.enabled : AvailabilityState.disabled,
+        bluetooth: value
+            ? AvailabilityState.enabled
+            : AvailabilityState.disabled,
       ),
     );
   }
@@ -192,10 +187,10 @@ class MotionController extends ChangeNotifier {
     try {
       final String? deviceId = before.selectedDeviceId;
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.output.volume.set',
-          <String, Object?>{'value': value, 'deviceId': deviceId},
-        );
+        await _serviceClient.call('audio.output.volume.set', <String, Object?>{
+          'value': value,
+          'deviceId': deviceId,
+        });
       } else {
         await _controls.setOutputVolume(value, deviceId: deviceId);
       }
@@ -215,10 +210,10 @@ class MotionController extends ChangeNotifier {
     try {
       final String? deviceId = before.selectedDeviceId;
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.input.volume.set',
-          <String, Object?>{'value': value, 'deviceId': deviceId},
-        );
+        await _serviceClient.call('audio.input.volume.set', <String, Object?>{
+          'value': value,
+          'deviceId': deviceId,
+        });
       } else {
         await _controls.setInputVolume(value, deviceId: deviceId);
       }
@@ -235,10 +230,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.output.device.set',
-          <String, Object?>{'deviceId': deviceId},
-        );
+        await _serviceClient.call('audio.output.device.set', <String, Object?>{
+          'deviceId': deviceId,
+        });
       } else {
         await _controls.setOutputDevice(deviceId);
         _snapshot = await _controls.readSnapshot(_snapshot);
@@ -257,10 +251,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.input.device.set',
-          <String, Object?>{'deviceId': deviceId},
-        );
+        await _serviceClient.call('audio.input.device.set', <String, Object?>{
+          'deviceId': deviceId,
+        });
       } else {
         await _controls.setInputDevice(deviceId);
         _snapshot = await _controls.readSnapshot(_snapshot);
@@ -281,10 +274,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.output.mute.toggle',
-          <String, Object?>{'deviceId': before.selectedDeviceId},
-        );
+        await _serviceClient.call('audio.output.mute.toggle', <String, Object?>{
+          'deviceId': before.selectedDeviceId,
+        });
       } else {
         await _controls.toggleOutputMute(deviceId: before.selectedDeviceId);
       }
@@ -303,10 +295,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'audio.input.mute.toggle',
-          <String, Object?>{'deviceId': before.selectedDeviceId},
-        );
+        await _serviceClient.call('audio.input.mute.toggle', <String, Object?>{
+          'deviceId': before.selectedDeviceId,
+        });
       } else {
         await _controls.toggleInputMute(deviceId: before.selectedDeviceId);
       }
@@ -322,10 +313,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'brightness.set',
-          <String, Object?>{'value': value},
-        );
+        await _serviceClient.call('brightness.set', <String, Object?>{
+          'value': value,
+        });
       } else {
         await _controls.setBrightness(value);
       }
@@ -340,10 +330,9 @@ class MotionController extends ChangeNotifier {
     notifyListeners();
     try {
       if (_serviceConnected) {
-        await _serviceClient.call(
-          'powerProfile.set',
-          <String, Object?>{'value': value},
-        );
+        await _serviceClient.call('powerProfile.set', <String, Object?>{
+          'value': value,
+        });
       } else {
         await _controls.setPowerProfile(value);
       }

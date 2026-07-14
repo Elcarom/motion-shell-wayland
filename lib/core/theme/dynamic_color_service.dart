@@ -64,8 +64,10 @@ class DynamicColorService {
           );
         }
       }
-      final QuantizerResult quantized =
-          await QuantizerCelebi().quantize(pixels, 96);
+      final QuantizerResult quantized = await QuantizerCelebi().quantize(
+        pixels,
+        96,
+      );
       final List<int> ranked = Score.score(
         quantized.colorToCount,
         desired: 6,
@@ -73,8 +75,7 @@ class DynamicColorService {
       );
       return WallpaperPalette(
         seedArgb: ranked.firstOrNull ?? fallbackSeedArgb,
-        candidatesArgb:
-            ranked.isEmpty ? const <int>[fallbackSeedArgb] : ranked,
+        candidatesArgb: ranked.isEmpty ? const <int>[fallbackSeedArgb] : ranked,
         sourcePath: path,
       );
     } on Object {

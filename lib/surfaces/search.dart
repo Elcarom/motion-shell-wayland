@@ -17,9 +17,12 @@ class _SearchSurfaceState extends State<SearchSurface> {
     final List<_SearchResult> results = _query.trim().isEmpty
         ? _suggestions
         : _suggestions
-            .where((_SearchResult item) =>
-                '${item.title} ${item.subtitle}'.toLowerCase().contains(_query.toLowerCase()))
-            .toList(growable: false);
+              .where(
+                (_SearchResult item) => '${item.title} ${item.subtitle}'
+                    .toLowerCase()
+                    .contains(_query.toLowerCase()),
+              )
+              .toList(growable: false);
     return Center(
       child: SurfaceFrame(
         maxWidth: 760,
@@ -77,5 +80,9 @@ const List<_SearchResult> _suggestions = <_SearchResult>[
   _SearchResult(Icons.settings_rounded, 'Appearance', 'Settings'),
   _SearchResult(Icons.calculate_rounded, '42 × 18 = 756', 'Calculator'),
   _SearchResult(Icons.folder_rounded, 'Downloads', 'Folder'),
-  _SearchResult(Icons.power_settings_new_rounded, 'Lock screen', 'System action'),
+  _SearchResult(
+    Icons.power_settings_new_rounded,
+    'Lock screen',
+    'System action',
+  ),
 ];

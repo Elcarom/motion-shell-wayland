@@ -14,11 +14,7 @@ import '../surfaces/system_bar.dart';
 import 'motion_controller.dart';
 
 class MotionApp extends StatelessWidget {
-  const MotionApp({
-    required this.controller,
-    required this.surface,
-    super.key,
-  });
+  const MotionApp({required this.controller, required this.surface, super.key});
 
   final MotionController controller;
   final SurfaceKind surface;
@@ -76,7 +72,9 @@ class _SurfaceHost extends StatelessWidget {
       body: FocusTraversalGroup(
         policy: ReadingOrderTraversalPolicy(),
         child: Padding(
-          padding: surface == SurfaceKind.bar ? EdgeInsets.zero : const EdgeInsets.all(8),
+          padding: surface == SurfaceKind.bar
+              ? EdgeInsets.zero
+              : const EdgeInsets.all(8),
           child: child,
         ),
       ),

@@ -22,7 +22,7 @@ class HyprlandEvent {
 
 class HyprlandClient {
   const HyprlandClient({Map<String, String>? environment})
-      : _environment = environment;
+    : _environment = environment;
 
   final Map<String, String>? _environment;
 
@@ -50,12 +50,12 @@ class HyprlandClient {
       );
       Socket? socket;
       try {
-        socket = await Socket.connect(address, 0).timeout(
-          const Duration(seconds: 2),
-        );
-        await for (final String line in socket
-            .transform(utf8.decoder)
-            .transform(const LineSplitter())) {
+        socket = await Socket.connect(
+          address,
+          0,
+        ).timeout(const Duration(seconds: 2));
+        await for (final String line
+            in socket.transform(utf8.decoder).transform(const LineSplitter())) {
           yield HyprlandEvent.parse(line);
         }
       } on Object {
@@ -80,23 +80,27 @@ class HyprlandClient {
       '$base/.socket.sock',
       type: InternetAddressType.unix,
     );
-    final Socket socket = await Socket.connect(address, 0).timeout(
-      const Duration(seconds: 1),
-    );
+    final Socket socket = await Socket.connect(
+      address,
+      0,
+    ).timeout(const Duration(seconds: 1));
     try {
       socket.write(request);
       await socket.flush();
       await socket.shutdown(SocketDirection.send);
-      return socket.transform(utf8.decoder).join().timeout(
-            const Duration(seconds: 2),
-          );
+      return socket
+          .transform(utf8.decoder)
+          .join()
+          .timeout(const Duration(seconds: 2));
     } finally {
       socket.destroy();
     }
   }
 
   Future<void> dispatch(String dispatcher, [String argument = '']) async {
-    final String suffix = argument.isEmpty ? dispatcher : '$dispatcher $argument';
+    final String suffix = argument.isEmpty
+        ? dispatcher
+        : '$dispatcher $argument';
     final String response = await request('dispatch $suffix');
     if (!response.trim().startsWith('ok')) {
       throw StateError('Hyprland rejected dispatcher: $response');

@@ -53,10 +53,7 @@ class MotionStateService {
     await _poll();
     _pollTimer = Timer.periodic(const Duration(seconds: 8), (_) => _poll());
     _subscriptions.add(
-      hyprland.events().listen(
-        _handleHyprlandEvent,
-        onError: _logError,
-      ),
+      hyprland.events().listen(_handleHyprlandEvent, onError: _logError),
     );
 
     await Completer<void>().future;
@@ -68,10 +65,10 @@ class MotionStateService {
         .transform(utf8.decoder)
         .transform(const LineSplitter())
         .listen(
-      (String line) => _handleRequest(socket, line),
-      onDone: () => _remove(socket),
-      onError: (_) => _remove(socket),
-    );
+          (String line) => _handleRequest(socket, line),
+          onDone: () => _remove(socket),
+          onError: (_) => _remove(socket),
+        );
     _subscriptions.add(subscription);
   }
 
@@ -237,11 +234,7 @@ class MotionStateService {
     }
   }
 
-
-  String? _validatedAudioDevice(
-    Object? rawId,
-    List<AudioDevice> devices,
-  ) {
+  String? _validatedAudioDevice(Object? rawId, List<AudioDevice> devices) {
     if (rawId == null) {
       return null;
     }
@@ -283,8 +276,9 @@ class MotionStateService {
       case 'activewindow':
         final int comma = event.data.indexOf(',');
         _snapshot = _snapshot.copyWith(
-          activeApplication:
-              comma >= 0 ? event.data.substring(comma + 1) : event.data,
+          activeApplication: comma >= 0
+              ? event.data.substring(comma + 1)
+              : event.data,
         );
         break;
       case 'screencast':
@@ -346,14 +340,15 @@ class MotionStateService {
     final String home = Platform.environment['HOME'] ?? '/tmp';
     final String bundledWallpaper =
         '$home/.local/share/motion-shell/wallpaper.png';
-    final String? wallpaperPath = values['wallpaperPath'] as String? ??
+    final String? wallpaperPath =
+        values['wallpaperPath'] as String? ??
         (await File(bundledWallpaper).exists() ? bundledWallpaper : null);
     final WallpaperPalette palette = await dynamicColor.extract(wallpaperPath);
     final String storedMode = values['themeMode'] as String? ?? 'dark';
     final String themeMode =
         const <String>{'system', 'light', 'dark'}.contains(storedMode)
-            ? storedMode
-            : 'dark';
+        ? storedMode
+        : 'dark';
     _snapshot = _snapshot.copyWith(
       doNotDisturb: values['doNotDisturb'] as bool? ?? false,
       themeSeedArgb: palette.seedArgb,
