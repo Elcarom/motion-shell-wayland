@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2b203d"/><stop offset=".5" stop-color="#594078"/><stop offset="1" stop-color="#1e5d5d"/></linearGradient><radialGradient id="glow"><stop stop-color="#d9b8ff" stop-opacity=".55"/><stop offset="1" stop-color="#d9b8ff" stop-opacity="0"/></radialGradient></defs>
+<rect x="0" y="0" width="1600" height="1000" rx="0" fill="url(#wall)" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="370" cy="280" r="420" fill="url(#glow)" stroke="none" stroke-width="0"/>
+<rect x="12" y="10" width="1576" height="64" rx="32" fill="#211c2a" stroke="#958d99" stroke-width="1" opacity="1"/>
+<rect x="20" y="18" width="172" height="48" rx="24" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<text x="52" y="50" font-family="Roboto, sans-serif" font-size="18" font-weight="600" fill="#eee7f2" text-anchor="start">⌘  Space 1</text>
+<text x="218" y="49" font-family="Roboto, sans-serif" font-size="18" font-weight="500" fill="#eee7f2" text-anchor="start">Desktop</text>
+<text x="1185" y="49" font-family="Roboto, sans-serif" font-size="17" font-weight="500" fill="#eee7f2" text-anchor="start">Tue 14  ·  10:42</text>
+<rect x="1370" y="18" width="206" height="48" rx="24" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<g fill="none" stroke="#eee7f2" stroke-width="5" stroke-linecap="round">
+    <path d="M1378 37 Q1400 17 1422 37"/><path d="M1386 46 Q1400 33 1414 46"/><path d="M1395 55 Q1400 50 1405 55"/></g>
+<text x="1430" y="49" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="start">▮▮  56%   2</text>
+<rect x="180" y="112" width="1240" height="820" rx="40" fill="#211c2a" stroke="#958d99" stroke-width="1" opacity="1"/>
+<rect x="216" y="146" width="1132" height="66" rx="33" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="256" y="188" font-family="Roboto, sans-serif" font-size="28" font-weight="500" fill="#cbc3cf" text-anchor="start">⌕</text>
+<text x="298" y="188" font-family="Roboto, sans-serif" font-size="19" font-weight="400" fill="#cbc3cf" text-anchor="start">Search apps, settings, files, and actions</text>
+<circle cx="1378" cy="179" r="30" fill="#302938" stroke="none" stroke-width="0"/>
+<text x="1378" y="188" font-family="Roboto, sans-serif" font-size="20" font-weight="500" fill="#cbc3cf" text-anchor="middle">◉</text>
+<text x="220" y="262" font-family="Roboto, sans-serif" font-size="30" font-weight="600" fill="#eee7f2" text-anchor="start">Your apps</text>
+<text x="220" y="292" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="start">8 recent and pinned</text>
+<rect x="1290" y="244" width="90" height="48" rx="24" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1335" y="275" font-family="Roboto, sans-serif" font-size="22" font-weight="600" fill="#eee7f2" text-anchor="middle">▦   ≡</text>
+<rect x="218" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="305" cy="408" r="44" fill="#254f4d" stroke="none" stroke-width="0"/>
+<text x="305" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#a7d9d4" text-anchor="middle">F</text>
+<text x="305" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Firefox</text>
+<text x="305" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="412" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="499" cy="408" r="44" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="499" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">W</text>
+<text x="499" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">WezTerm</text>
+<text x="499" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="606" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="693" cy="408" r="44" fill="#49364a" stroke="none" stroke-width="0"/>
+<text x="693" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">F</text>
+<text x="693" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Files</text>
+<text x="693" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="800" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="887" cy="408" r="44" fill="#254f4d" stroke="none" stroke-width="0"/>
+<text x="887" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#a7d9d4" text-anchor="middle">T</text>
+<text x="887" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Text Editor</text>
+<text x="887" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="994" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="1081" cy="408" r="44" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="1081" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">C</text>
+<text x="1081" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Calculator</text>
+<text x="1081" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="1188" y="326" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="1275" cy="408" r="44" fill="#49364a" stroke="none" stroke-width="0"/>
+<text x="1275" y="421" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">I</text>
+<text x="1275" y="486" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Image Viewer</text>
+<text x="1275" y="513" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="218" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="305" cy="650" r="44" fill="#254f4d" stroke="none" stroke-width="0"/>
+<text x="305" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#a7d9d4" text-anchor="middle">V</text>
+<text x="305" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Videos</text>
+<text x="305" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="412" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="499" cy="650" r="44" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="499" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">S</text>
+<text x="499" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Settings</text>
+<text x="499" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="606" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="693" cy="650" r="44" fill="#49364a" stroke="none" stroke-width="0"/>
+<text x="693" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">A</text>
+<text x="693" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Audio</text>
+<text x="693" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="800" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="887" cy="650" r="44" fill="#254f4d" stroke="none" stroke-width="0"/>
+<text x="887" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#a7d9d4" text-anchor="middle">P</text>
+<text x="887" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">PDFs</text>
+<text x="887" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="994" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="1081" cy="650" r="44" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="1081" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">D</text>
+<text x="1081" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Disk Usage</text>
+<text x="1081" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+<rect x="1188" y="568" width="174" height="214" rx="28" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="1275" cy="650" r="44" fill="#49364a" stroke="none" stroke-width="0"/>
+<text x="1275" y="663" font-family="Roboto, sans-serif" font-size="34" font-weight="600" fill="#eee7f2" text-anchor="middle">M</text>
+<text x="1275" y="728" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="middle">Monitor</text>
+<text x="1275" y="755" font-family="Roboto, sans-serif" font-size="13" font-weight="400" fill="#cbc3cf" text-anchor="middle">Application</text>
+</svg>

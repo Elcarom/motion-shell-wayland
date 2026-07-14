@@ -1,0 +1,8 @@
+[Unit]
+Description=Motion Shell
+Requires=motion-state.service motion-bar.service
+After=graphical-session.target
+BindsTo=graphical-session.target
+
+[Install]
+WantedBy=graphical-session.target

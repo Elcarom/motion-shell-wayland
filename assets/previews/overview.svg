@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2b203d"/><stop offset=".5" stop-color="#594078"/><stop offset="1" stop-color="#1e5d5d"/></linearGradient><radialGradient id="glow"><stop stop-color="#d9b8ff" stop-opacity=".55"/><stop offset="1" stop-color="#d9b8ff" stop-opacity="0"/></radialGradient></defs>
+<rect x="0" y="0" width="1600" height="1000" rx="0" fill="url(#wall)" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="370" cy="280" r="420" fill="url(#glow)" stroke="none" stroke-width="0"/>
+<rect x="12" y="10" width="1576" height="64" rx="32" fill="#211c2a" stroke="#958d99" stroke-width="1" opacity="1"/>
+<rect x="20" y="18" width="172" height="48" rx="24" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<text x="52" y="50" font-family="Roboto, sans-serif" font-size="18" font-weight="600" fill="#eee7f2" text-anchor="start">⌘  Space 1</text>
+<text x="218" y="49" font-family="Roboto, sans-serif" font-size="18" font-weight="500" fill="#eee7f2" text-anchor="start">Spaces</text>
+<text x="1185" y="49" font-family="Roboto, sans-serif" font-size="17" font-weight="500" fill="#eee7f2" text-anchor="start">Tue 14  ·  10:42</text>
+<rect x="1370" y="18" width="206" height="48" rx="24" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<g fill="none" stroke="#eee7f2" stroke-width="5" stroke-linecap="round">
+    <path d="M1378 37 Q1400 17 1422 37"/><path d="M1386 46 Q1400 33 1414 46"/><path d="M1395 55 Q1400 50 1405 55"/></g>
+<text x="1430" y="49" font-family="Roboto, sans-serif" font-size="17" font-weight="600" fill="#eee7f2" text-anchor="start">▮▮  56%   2</text>
+<rect x="130" y="108" width="1340" height="830" rx="40" fill="#211c2a" stroke="#958d99" stroke-width="1" opacity="1"/>
+<text x="164" y="164" font-family="Roboto, sans-serif" font-size="30" font-weight="600" fill="#eee7f2" text-anchor="start">Spaces</text>
+<text x="164" y="194" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="start">A spatial map of work</text>
+<rect x="1286" y="134" width="150" height="52" rx="26" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1361" y="167" font-family="Roboto, sans-serif" font-size="16" font-weight="600" fill="#eee7f2" text-anchor="middle">＋ New space</text>
+<rect x="158" y="226" width="118" height="684" rx="34" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="173" y="236" width="88" height="58" rx="29" fill="#4c4055" stroke="none" stroke-width="0" opacity="1"/>
+<text x="217" y="266" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#eee7f2" text-anchor="middle">▦</text>
+<text x="217" y="294" font-family="Roboto, sans-serif" font-size="13" font-weight="500" fill="#cbc3cf" text-anchor="middle">Spaces</text>
+<text x="217" y="368" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#eee7f2" text-anchor="middle">▣</text>
+<text x="217" y="396" font-family="Roboto, sans-serif" font-size="13" font-weight="500" fill="#cbc3cf" text-anchor="middle">Windows</text>
+<text x="217" y="470" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#eee7f2" text-anchor="middle">⌕</text>
+<text x="217" y="498" font-family="Roboto, sans-serif" font-size="13" font-weight="500" fill="#cbc3cf" text-anchor="middle">Find</text>
+<rect x="300" y="230" width="346" height="296" rx="30" fill="#4b3864" stroke="none" stroke-width="0" opacity="1"/>
+<text x="322" y="272" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 1</text>
+<circle cx="616" cy="262" r="8" fill="#d4bbff" stroke="#958d99" stroke-width="3"/>
+<rect x="320" y="300" width="145" height="188" rx="20" fill="#211c2a" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="392" cy="375" r="34" fill="#254f4d" stroke="none" stroke-width="0"/>
+<text x="392" y="386" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#a7d9d4" text-anchor="middle">F</text>
+<text x="392" y="448" font-family="Roboto, sans-serif" font-size="15" font-weight="500" fill="#eee7f2" text-anchor="middle">Firefox</text>
+<rect x="481" y="300" width="145" height="188" rx="20" fill="#211c2a" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="553" cy="375" r="34" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="553" y="386" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#eee7f2" text-anchor="middle">E</text>
+<text x="553" y="448" font-family="Roboto, sans-serif" font-size="15" font-weight="500" fill="#eee7f2" text-anchor="middle">Editor</text>
+<rect x="676" y="230" width="346" height="296" rx="30" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="698" y="272" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 2</text>
+<circle cx="992" cy="262" r="8" fill="none" stroke="#958d99" stroke-width="3"/>
+<rect x="732" y="300" width="234" height="188" rx="20" fill="#211c2a" stroke="none" stroke-width="0" opacity="1"/>
+<circle cx="849" cy="375" r="34" fill="#4c4055" stroke="none" stroke-width="0"/>
+<text x="849" y="386" font-family="Roboto, sans-serif" font-size="26" font-weight="600" fill="#eee7f2" text-anchor="middle">F</text>
+<text x="849" y="448" font-family="Roboto, sans-serif" font-size="15" font-weight="500" fill="#eee7f2" text-anchor="middle">Files</text>
+<rect x="1052" y="230" width="346" height="296" rx="30" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1074" y="272" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 3</text>
+<circle cx="1368" cy="262" r="8" fill="none" stroke="#958d99" stroke-width="3"/>
+<text x="1225.0" y="400" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="middle">Room to begin</text>
+<rect x="300" y="556" width="346" height="296" rx="30" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="322" y="598" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 4</text>
+<circle cx="616" cy="588" r="8" fill="none" stroke="#958d99" stroke-width="3"/>
+<text x="473.0" y="726" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="middle">Room to begin</text>
+<rect x="676" y="556" width="346" height="296" rx="30" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="698" y="598" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 5</text>
+<circle cx="992" cy="588" r="8" fill="none" stroke="#958d99" stroke-width="3"/>
+<text x="849.0" y="726" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="middle">Room to begin</text>
+<rect x="1052" y="556" width="346" height="296" rx="30" fill="#302938" stroke="none" stroke-width="0" opacity="1"/>
+<text x="1074" y="598" font-family="Roboto, sans-serif" font-size="19" font-weight="600" fill="#eee7f2" text-anchor="start">Space 6</text>
+<circle cx="1368" cy="588" r="8" fill="none" stroke="#958d99" stroke-width="3"/>
+<text x="1225.0" y="726" font-family="Roboto, sans-serif" font-size="16" font-weight="400" fill="#cbc3cf" text-anchor="middle">Room to begin</text>
+</svg>

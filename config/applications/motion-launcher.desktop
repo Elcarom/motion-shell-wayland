@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Motion Launcher
+Comment=Open applications, windows, settings, files, and actions
+Exec=motion-shell --surface=launcher
+Icon=system-search
+Terminal=false
+Categories=Utility;
+NoDisplay=true
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Motion Settings
+Comment=Configure the Motion Material desktop shell
+Exec=motion-shell --surface=settings
+Icon=preferences-system
+Terminal=false
+Categories=Settings;DesktopSettings;
+StartupNotify=true
