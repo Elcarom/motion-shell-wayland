@@ -12,6 +12,8 @@ flutter:
     - assets/
 
 dependencies:
+  motion_layer_shell:
+    path: native/linux_plugins/motion_layer_shell
   flutter:
     sdk: flutter
   image: ^4.9.1

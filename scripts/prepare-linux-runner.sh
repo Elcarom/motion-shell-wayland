@@ -22,12 +22,33 @@ import sys
 p = Path(sys.argv[1])
 s = p.read_text()
 s = s.replace('gboolean use_header_bar = TRUE;', 'gboolean use_header_bar = FALSE;')
-marker = '  gtk_window_set_default_size(window, 1280, 720);'
-realize = '  gtk_widget_realize(GTK_WIDGET(window));'
-if realize not in s:
-if marker not in s:
-raise SystemExit('Could not locate GTK window size setup.')
-s = s.replace(marker, marker + '\n' + realize, 1)
+s = s.replace(
+    "  gtk_widget_realize(GTK_WIDGET(window));
+",
+    "",
+    1,
+)
+
+old = (
+    "  gtk_widget_realize(GTK_WIDGET(view));
+"
+    "
+"
+    "  fl_register_plugins(FL_PLUGIN_REGISTRY(view));"
+)
+
+new = (
+    "  fl_register_plugins(FL_PLUGIN_REGISTRY(view));
+"
+    "  gtk_widget_realize(GTK_WIDGET(view));"
+)
+
+if old not in s:
+    raise SystemExit(
+        "Could not locate Flutter view registration order."
+    )
+
+s = s.replace(old, new, 1)
 p.write_text(s)
 PY
 
