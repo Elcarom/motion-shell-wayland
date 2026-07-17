@@ -26,7 +26,7 @@ class SystemBarSurface extends StatelessWidget {
     final SystemSnapshot state = controller.snapshot;
     final ColorScheme colors = Theme.of(context).colorScheme;
     return SafeArea(
-      minimum: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      minimum: const EdgeInsets.symmetric(vertical: 4),
       child: Material(
         color: colors.surfaceContainer,
         elevation: 2,

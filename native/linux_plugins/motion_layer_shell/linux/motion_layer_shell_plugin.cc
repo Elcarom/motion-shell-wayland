@@ -58,9 +58,9 @@ bool ReadSurfaceSpec(const char* role, SurfaceSpec* spec) {
         false,
         true,
         8,
-        12,
+        20,
         0,
-        12,
+        20,
         true,
     };
     return true;
@@ -78,8 +78,8 @@ bool ReadSurfaceSpec(const char* role, SurfaceSpec* spec) {
         true,
         false,
         false,
-        76,
-        16,
+        0,
+        20,
         0,
         0,
         false,

@@ -67,6 +67,13 @@ class _SurfaceHost extends StatelessWidget {
     if (surface == SurfaceKind.settings || surface == SurfaceKind.showcase) {
       return child;
     }
+
+    final Widget positionedChild =
+        surface == SurfaceKind.quickSettings ||
+            surface == SurfaceKind.notifications
+        ? Align(alignment: Alignment.topRight, child: child)
+        : child;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: FocusTraversalGroup(
@@ -74,8 +81,11 @@ class _SurfaceHost extends StatelessWidget {
         child: Padding(
           padding: surface == SurfaceKind.bar
               ? EdgeInsets.zero
+              : surface == SurfaceKind.quickSettings ||
+                    surface == SurfaceKind.notifications
+              ? const EdgeInsets.fromLTRB(8, 8, 0, 8)
               : const EdgeInsets.all(8),
-          child: child,
+          child: positionedChild,
         ),
       ),
     );
