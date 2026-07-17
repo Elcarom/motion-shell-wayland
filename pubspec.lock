@@ -319,14 +319,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.2.0"
-  wayland_layer_shell:
-    dependency: "direct main"
-    description:
-      name: wayland_layer_shell
-      sha256: fa71ae0e4b63c91ae1a882c52850f366a3c241f900773cea845761e589ce14fc
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   xml:
     dependency: transitive
     description:
