@@ -169,12 +169,12 @@ void ConfigureLayerWindow(FlPluginRegistrar* registrar) {
   }
 
   GtkWindow* window = GTK_WINDOW(top_level);
+
   std::string namespace_name = "motion-shell-";
   namespace_name += spec.role;
 
   gtk_window_set_decorated(window, FALSE);
-  gtk_window_set_resizable(window, FALSE);
-  gtk_window_set_default_size(window, spec.width, spec.height);
+
   gtk_widget_set_app_paintable(GTK_WIDGET(window), TRUE);
 
   gtk_layer_init_for_window(window);
@@ -191,6 +191,15 @@ void ConfigureLayerWindow(FlPluginRegistrar* registrar) {
   gtk_layer_set_margin(window, GTK_LAYER_SHELL_EDGE_RIGHT, spec.margin_right);
   gtk_layer_set_margin(window, GTK_LAYER_SHELL_EDGE_BOTTOM, spec.margin_bottom);
   gtk_layer_set_margin(window, GTK_LAYER_SHELL_EDGE_LEFT, spec.margin_left);
+
+  // Configure anchors before forcing the window size. On an axis anchored to
+  // opposite edges, gtk-layer-shell lets the compositor supply that dimension.
+  // For the bar this means compositor-controlled width and a fixed 64 px height.
+  gtk_widget_set_size_request(
+      GTK_WIDGET(window),
+      spec.width > 0 ? spec.width : -1,
+      spec.height > 0 ? spec.height : -1);
+  gtk_window_resize(window, 1, 1);
 
   if (spec.auto_exclusive) {
     gtk_layer_auto_exclusive_zone_enable(window);

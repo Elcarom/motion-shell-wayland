@@ -23,4 +23,33 @@ if test -d /tmp/motion-gtk-layer-0.10.0/usr/lib
         LD_LIBRARY_PATH=/tmp/motion-gtk-layer-0.10.0/usr/lib
 end
 
-env $environment $binary --surface=$role
+if not command -q flock
+    echo "Missing required command: flock from util-linux." >&2
+    exit 1
+end
+
+set -l runtime_dir /run/user/(id -u)
+if set -q XDG_RUNTIME_DIR
+    if test -n "$XDG_RUNTIME_DIR"
+        set runtime_dir $XDG_RUNTIME_DIR
+    end
+end
+
+if not test -d "$runtime_dir"
+    echo "Runtime directory does not exist: $runtime_dir" >&2
+    exit 1
+end
+
+# Keep independent surfaces from blocking one another while preventing two
+# instances of the same role from stacking layers and exclusive zones.
+set -l lock_role (string replace -ar "[^A-Za-z0-9._-]" "_" -- $role)
+set -l lock_file "$runtime_dir/motion-shell-$lock_role.lock"
+
+flock -x -n -E 75 "$lock_file"     env $environment $binary --surface=$role
+
+set -l launch_status $status
+if test $launch_status -eq 75
+    echo "Motion Shell surface $role is already running." >&2
+end
+
+exit $launch_status
