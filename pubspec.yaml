@@ -18,7 +18,7 @@ dependencies:
   icon_button_m3e: ^0.2.1
   loading_indicator_m3e: ^0.1.1
   material_color_utilities: ^0.13.0
-  m3e_buttons: ^0.0.4
+  m3e_buttons: ^1.0.0
   m3e_design: ^0.2.1
   wayland_layer_shell: ^1.0.1
 
